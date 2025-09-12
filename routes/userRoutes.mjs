@@ -5,33 +5,31 @@ import users from "../data/users.js";
 
 const router = express.Router();
 
+// Get all users
 router.get("/", (req, res) => {
   res.json(users);
 });
 
+// Create user
 router.post("/", (req, res) => {
   const { name, email } = req.body;
   if (!name || !email) {
     return res.status(400).json({ error: "Name and email are required" });
   }
-
   const newUser = {
     id: users.length + 1,
     name,
     email,
   };
-
   users.push(newUser);
   res.status(201).json(newUser);
 });
 
+// Update user
 router.patch("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const user = users.find((u) => u.id === id);
-
-  if (!user) {
-    return res.status(404).json({ error: "User not found" });
-  }
+  if (!user) return res.status(404).json({ error: "User not found" });
 
   const { name, email } = req.body;
   if (name) user.name = name;
@@ -40,13 +38,11 @@ router.patch("/:id", (req, res) => {
   res.json(user);
 });
 
+// Delete user
 router.delete("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const index = users.findIndex((u) => u.id === id);
-
-  if (index === -1) {
-    return res.status(404).json({ error: "User not found" });
-  }
+  if (index === -1) return res.status(404).json({ error: "User not found" });
 
   users.splice(index, 1);
   res.status(204).send();

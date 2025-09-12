@@ -1,26 +1,21 @@
-// routes/postRoutes.mjs
-
 import express from "express";
-import posts from "../data/posts.mjs";
+import posts from "../data/posts.js";
 
 const router = express.Router();
 
+// Get all posts, optionally filter by userId
 router.get("/", (req, res) => {
   const { userId } = req.query;
   let filteredPosts = posts;
-
-  if (userId) {
-    filteredPosts = posts.filter((post) => post.userId === parseInt(userId));
-  }
-
+  if (userId) filteredPosts = posts.filter((p) => p.userId === parseInt(userId));
   res.json(filteredPosts);
 });
 
+// Create post
 router.post("/", (req, res) => {
   const { userId, title, content } = req.body;
-  if (!userId || !title || !content) {
+  if (!userId || !title || !content)
     return res.status(400).json({ error: "userId, title and content are required" });
-  }
 
   const newPost = {
     id: posts.length + 1,
@@ -28,18 +23,15 @@ router.post("/", (req, res) => {
     title,
     content,
   };
-
   posts.push(newPost);
   res.status(201).json(newPost);
 });
 
+// Update post
 router.patch("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const post = posts.find((p) => p.id === id);
-
-  if (!post) {
-    return res.status(404).json({ error: "Post not found" });
-  }
+  if (!post) return res.status(404).json({ error: "Post not found" });
 
   const { title, content } = req.body;
   if (title) post.title = title;
@@ -48,13 +40,11 @@ router.patch("/:id", (req, res) => {
   res.json(post);
 });
 
+// Delete post
 router.delete("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const index = posts.findIndex((p) => p.id === id);
-
-  if (index === -1) {
-    return res.status(404).json({ error: "Post not found" });
-  }
+  if (index === -1) return res.status(404).json({ error: "Post not found" });
 
   posts.splice(index, 1);
   res.status(204).send();
