@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog Home</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <h1>Welcome to the Blog</h1>
+
+  <section>
+    <h2>Users</h2>
+    <ul>
+      <% users.forEach(user => { %>
+        <li><strong><%= user.name %></strong> — <%= user.email %></li>
+      <% }) %>
+    </ul>
+    <a href="/create-user">Create New User</a>
+  </section>
+
+  <section>
+    <h2>Posts</h2>
+    <ul>
+      <% posts.forEach(post => { %>
+        <li><strong><%= post.title %></strong> (User ID: <%= post.userId %>)</li>
+      <% }) %>
+    </ul>
+    <a href="/create-post">Create New Post</a>
+  </section>
+
+  <section>
+    <a href="/create-comment">Create New Comment</a>
+  </section>
+</body>
+</html>
