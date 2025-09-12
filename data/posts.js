@@ -1,5 +1,4 @@
 // data/posts.mjs
-
 const posts = [
   {
     id: 1,
@@ -15,4 +14,4 @@ const posts = [
   }
 ];
 
-module.exports = posts;
+export default posts

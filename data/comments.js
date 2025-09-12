@@ -1,5 +1,4 @@
 // data/comments.mjs
-
 const comments = [
   {
     id: 1,
@@ -13,4 +12,5 @@ const comments = [
   }
 ];
 
-module.exports = comments;
+// module.exports = comments;
+export default comments
