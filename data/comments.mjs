@@ -1,6 +1,5 @@
-// data/comments.js
+// data/comments.mjs
 
-// Initial mock comments data
 const comments = [
   {
     id: 1,

@@ -1,3 +1,4 @@
+// data/posts.mjs
 
 const posts = [
   {

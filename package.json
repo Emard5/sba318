@@ -2,17 +2,26 @@
   "name": "sba",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "keywords": [],
+  "homepage": "https://github.com/Emard5/sba318#readme",
+  "bugs": {
+    "url": "https://github.com/Emard5/sba318/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emard5/sba318.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "body-parser": "^2.2.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0"
-  }
+  },
+  "devDependencies": {}
 }
